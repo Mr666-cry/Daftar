@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pesan Panel VPS SamXSecure</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f8fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    .container:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #444;
+    }
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e1e1e1;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus {
+      border-color: #5f63f2;
+      outline: none;
+      box-shadow: 0 0 5px rgba(95, 99, 242, 0.5);
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #5f63f2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #4e54e1;
+    }
+    .warning {
+      background-color: #ffc107;
+      color: #333;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pesan Panel Privat VPS SamXSecure</h2>
+
+    <div class="form-group">
+      <label for="name">Nama User Panel</label>
+      <input type="text" id="name" placeholder="Masukkan Nama User Panel" required>
+    </div>
+
+    <div class="form-group">
+      <label for="contact">Email dan No WhatsApp</label>
+      <input type="text" id="contact" placeholder="Masukkan Email dan No WhatsApp" required>
+    </div>
+
+    <div class="form-group">
+      <label for="capacity">Kapasitas Panel</label>
+      <select id="capacity">
+        <option value="1GB - 1K">1GB - 1K</option>
+        <option value="2GB - 2K">2GB - 2K</option>
+        <option value="3GB - 3K">3GB - 3K</option>
+        <option value="4GB - 4K">4GB - 4K</option>
+        <option value="5GB - 5K">5GB - 5K</option>
+        <option value="6GB - 6K">6GB - 6K</option>
+        <option value="7GB - 7K">7GB - 7K</option>
+        <option value="8GB - 8K">8GB - 8K</option>
+        <option value="9GB - 9K">9GB - 9K</option>
+        <option value="10GB - 10K">10GB - 10K</option>
+        <option value="Unlimited - 10K">Unlimited - 10K</option>
+ <option value="Reseller Panel- 4K">Reseller Panel - 4K</option>
+      </select>
+    </div>
+
+    <button onclick="processOrder()">Order Now</button>
+
+    <div class="warning" id="warningMessage">
+      Pesanan Anda akan diproses setelah melakukan pembayaran.
+    </div>
+  </div>
+
+  <script>
+    const botToken = '7316506436:AAGQ2m3r6i8ngwNMZ2L_Q_gqec2B7SHs5Cw';
+    const chatId = '7625804862';
+
+    function processOrder() {
+      const name = document.getElementById('name').value;
+      const contact = document.getElementById('contact').value;
+      const capacity = document.getElementById('capacity').value;
+
+      if (!name || !contact || !capacity) {
+        alert('Silakan isi semua data dengan lengkap!');
+        return;
+      }
+
+      // Show warning message after clicking "Order Now"
+      document.getElementById('warningMessage').style.display = 'block';
+
+      // Send order data to Telegram
+      const message = `
+[ + ] ADA PESANAN BARU NII [ + ]
+
+📛 Nama: ${name}
+✉️/📞 Email dan nomor WhatsApp: ${contact}
+🌐 Kapasitas: ${capacity}
+      `;
+
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            // Redirect user to payment page after sending data
+            setTimeout(() => {
+              window.location.href = "https://mr666-cry.github.io/Samstore/payment.html";
+            }, 2000); // Delay to show warning message before redirect
+          } else {
+            alert("Gagal mengirim pesan ke Telegram.");
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert("Terjadi kesalahan. Pesanan gagal dikirim.");
+        });
+    }
+  </script>
+</body>
+</html>
