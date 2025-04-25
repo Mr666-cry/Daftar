@@ -101,7 +101,7 @@
 </head>
 <body>
   <div class="container">
-    <h2>Pesan Panel Privat VPS SamXSecure</h2>
+    <h2>Pesan Panel VPS SamXSecure</h2>
 
     <div class="form-group">
       <label for="name">Nama User Panel</label>
@@ -114,20 +114,22 @@
     </div>
 
     <div class="form-group">
-      <label for="capacity">Kapasitas Panel</label>
+      <label for="capacity">Kapasitas/Jenis Panel</label>
       <select id="capacity">
-        <option value="1GB - 1K">1GB - 1K</option>
-        <option value="2GB - 2K">2GB - 2K</option>
-        <option value="3GB - 3K">3GB - 3K</option>
-        <option value="4GB - 4K">4GB - 4K</option>
-        <option value="5GB - 5K">5GB - 5K</option>
-        <option value="6GB - 6K">6GB - 6K</option>
-        <option value="7GB - 7K">7GB - 7K</option>
-        <option value="8GB - 8K">8GB - 8K</option>
-        <option value="9GB - 9K">9GB - 9K</option>
-        <option value="10GB - 10K">10GB - 10K</option>
-        <option value="Unlimited - 10K">Unlimited - 10K</option>
- <option value="Reseller Panel- 4K">Reseller Panel - 4K</option>
+        <option value="1GB - 1K PRIVAT">1GB - 1K PRIVAT</option>
+        <option value="2GB - 2K PRIVAT">2GB - 2K PRIVAT</option>
+        <option value="3GB - 3K PRIVAT">3GB - 3K PRIVAT</option>
+        <option value="4GB - 4K PRIVAT">4GB - 4K PRIVAT</option>
+        <option value="5GB - 5K PRIVAT">5GB - 5K PRIVAT</option>
+        <option value="6GB - 6K PRIVAT">6GB - 6K PRIVAT</option>
+        <option value="7GB - 7K PRIVAT">7GB - 7K PRIVAT</option>
+        <option value="8GB - 8K PRIVAT">8GB - 8K PRIVAT</option>
+        <option value="9GB - 9K PRIVAT">9GB - 9K PRIVAT</option>
+        <option value="10GB - 10K PRIVAT">10GB - 10K PRIVAT</option>
+        <option value="Unlimited - 10K PRIVAT">Unlimited - 10K PRIVAT</option>
+ <option value="Reseller Panel- 2K">Reseller Panel - 2K</option>
+         <option value="Admin Panel- 3K">Admin Panel - 3K</option>
+         <option value="PT Panel- 5K">PT Panel - 5K</option>
       </select>
     </div>
 
@@ -171,7 +173,7 @@
             // Redirect user to payment page after sending data
             setTimeout(() => {
               window.location.href = "https://mr666-cry.github.io/Samstore/payment.html";
-            }, 2000); // Delay to show warning message before redirect
+            }, 1000); // Delay to show warning message before redirect
           } else {
             alert("Gagal mengirim pesan ke Telegram.");
           }
